@@ -1,0 +1,7 @@
+0.0: (stack b c robot)
+1.0: (unstack d e robot)
+2.0: (stack a d robot)
+3.0: (putdown d robot)
+4.0: (stack a b robot)
+5.0: (unstack a d robot)
+6.0: (stack e d robot)
