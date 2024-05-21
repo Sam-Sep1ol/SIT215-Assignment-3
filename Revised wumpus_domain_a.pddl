@@ -1,5 +1,4 @@
 (define (domain wumpus_domain_a)
-
   (:predicates
    (adj ?square-1 ?square-2)
    (pit ?square)
@@ -12,7 +11,9 @@
     :parameters (?who ?from ?to)
     :precondition (and (adj ?from ?to)
 		       (not (pit ?to))
-		       (at ?who ?from))
+		       (at ?who ?from)
+		       (or (clear-path ?from ?to)
+		           (clear-path ?to ?from))) ; Adjusted precondition to include clear path
     :effect (and (not (at ?who ?from))
 		 (at ?who ?to))
     )
@@ -36,16 +37,3 @@
 		 (not (have ?who ?arrow)))
     )
 )
-
-;; Helper function to determine clear path (horizontal and vertical)
-(:derived (clear-path ?from ?to)
-  (or (forall (?middle)
-          (and (adj ?from ?middle) 
-               (adj ?middle ?to)
-               (not (pit ?middle))))
-      (forall (?middle)
-          (and (adj ?middle ?from)
-               (adj ?to ?middle)
-               (not (pit ?middle)))))
-)
-  
