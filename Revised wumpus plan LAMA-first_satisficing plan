@@ -1,0 +1,97 @@
+//Revised wumpus plan LAMA-first_satisficing plan
+(move the-gold sq-2-3 sq-2-2)
+  (:action move
+    :parameters (the-gold sq-2-3 sq-2-2)
+    :precondition
+      (and
+        (adj sq-2-3 sq-2-2)
+        (not
+          (pit sq-2-2)
+        )
+        (at the-gold sq-2-3)
+      )
+    :effect
+      (and
+        (not
+          (at the-gold sq-2-3)
+        )
+        (at the-gold sq-2-2)
+      )
+  )
+
+(move the-gold sq-2-2 sq-2-1)
+  (:action move
+    :parameters (the-gold sq-2-2 sq-2-1)
+    :precondition
+      (and
+        (adj sq-2-2 sq-2-1)
+        (not
+          (pit sq-2-1)
+        )
+        (at the-gold sq-2-2)
+      )
+    :effect
+      (and
+        (not
+          (at the-gold sq-2-2)
+        )
+        (at the-gold sq-2-1)
+      )
+  )
+
+(move agent sq-1-1 sq-2-1)
+ (:action move
+    :parameters (agent sq-1-1 sq-2-1)
+    :precondition
+      (and
+        (adj sq-1-1 sq-2-1)
+        (not
+          (pit sq-2-1)
+        )
+        (at agent sq-1-1)
+      )
+    :effect
+      (and
+        (not
+          (at agent sq-1-1)
+        )
+        (at agent sq-2-1)
+      )
+  )
+
+(take agent the-gold sq-2-1)
+  (:action take
+    :parameters (agent the-gold sq-2-1)
+    :precondition
+      (and
+        (at agent sq-2-1)
+        (at the-gold sq-2-1)
+      )
+    :effect
+      (and
+        (have agent the-gold)
+        (not
+          (at the-gold sq-2-1)
+        )
+      )
+  )
+
+(move agent sq-2-1 sq-1-1)
+  (:action move
+    :parameters (agent sq-2-1 sq-1-1)
+    :precondition
+      (and
+        (adj sq-2-1 sq-1-1)
+        (not
+          (pit sq-1-1)
+        )
+        (at agent sq-2-1)
+      )
+    :effect
+      (and
+        (not
+          (at agent sq-2-1)
+        )
+        (at agent sq-1-1)
+      )
+  )
