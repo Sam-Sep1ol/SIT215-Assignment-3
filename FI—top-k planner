@@ -1,0 +1,75 @@
+(stack a b robot)
+(:action stack
+    :parameters (a b robot)
+    :precondition
+      (and
+        (clear b)
+        (handempty robot)
+      )
+    :effect
+      (and
+        (not (clear b))
+        (not (handempty robot))
+        (on a b)
+      )
+  )
+(unstack d e robot)
+(:action unstack
+    :parameters (d e robot)
+    :precondition
+      (and
+        (on d e)
+        (clear d)
+        (not (handempty robot))
+      )
+    :effect
+      (and
+        (clear e)
+        (handempty robot)
+        (not (on d e))
+      )
+  )
+(stack e d robot)
+(:action stack
+    :parameters (e d robot)
+    :precondition
+      (and
+        (clear d)
+        (handempty robot)
+      )
+    :effect
+      (and
+        (not (clear d))
+        (not (handempty robot))
+        (on e d)
+      )
+  )
+(putdown d robot)
+(:action putdown
+    :parameters (d robot)
+    :precondition
+      (and
+        (not (clear d))
+        (not (ontable d))
+        (not (handempty robot))
+      )
+    :effect
+      (and
+        (clear d)
+        (ontable d)
+        (handempty robot)
+      )
+  )
+(stack b c robot)
+(:action stack
+    :parameters (b c robot)
+    :precondition
+      (and
+        (clear c)
+        (handempty robot))
+    :effect
+      (and
+        (not (clear c))
+        (not (handempty robot))
+        (on b c))
+  )
